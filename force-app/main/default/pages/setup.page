@@ -1,0 +1,23 @@
+<apex:page controller="SetupCtrl" sidebar="false" title="My App Setup" lightningStylesheets="{!$User.UIThemeDisplayed == 'Theme4d'}" >
+
+    <c:setupStep title="Establish API Connection" step="{!connection}">
+        <apex:pageBlockSection columns="1">
+            <apex:inputText label="Named Credential Endpoint:" size="100" required="true"
+                            value="{!connection.apiEndpoint}" disabled="{!connection.apiEndpoint != null}"/>
+        </apex:pageBlockSection>
+    </c:setupStep>
+
+
+    <c:setupStep title="Setup API Remote Site" step="{!site}" />
+
+
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="1" title="Third-Party Licenses">
+            This software uses the following open-source software. Their licenses require us to reproduce their copyright notice.
+            <ul>
+                <li><a href="https://github.com/rsoesemann/app-setup/blob/master/LICENSE" target="_blank">rsoesemann/app-setup</a></li>
+                <li><a href="https://github.com/financialforcedev/apex-mdapi/blob/master/LICENSE" target="_blank">financialforcedev/apex-mdapi</a></li>
+            </ul>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
