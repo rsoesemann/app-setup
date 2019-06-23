@@ -11,6 +11,9 @@
     <c:setupStep title="Setup API Remote Site" step="{!site}" />
 
 
+    <c:setupStep title="Batch Migrate Accounts" step="{!migrate}" />
+
+
     <apex:pageBlock >
         <apex:pageBlockSection columns="1" title="Third-Party Licenses">
             This software uses the following open-source software. Their licenses require us to reproduce their copyright notice.
