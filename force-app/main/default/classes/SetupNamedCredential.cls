@@ -1,49 +1,43 @@
 public with sharing class SetupNamedCredential extends SetupStep {
 
 	public String apiEndpoint { get; set; }
+	public List<NamedCredential> namedCredential { get; private set; }
 
 
 	// PUBLIC
 
-	public List<NamedCredential> namedCredential {
-		get {
-			List<NamedCredential> namedCredential = [SELECT Endpoint FROM NamedCredential WHERE DeveloperName = 'A360Backend' LIMIT 1];
-			if(!namedCredential.isEmpty()) {
-				apiEndpoint = namedCredential[0].Endpoint;
-			}
-			return namedCredential;
-		}
-		private set;
-	}
-
-
 	public override ApexPages.Message getStatus() {
-		ApexPages.Severity severity = (namedCredential.isEmpty()) ? ApexPages.Severity.WARNING : ApexPages.Severity.CONFIRM;
-		return new ApexPages.Message(severity, 'A Named Credential is needed for My App to connect with its API.');
+		namedCredential = [SELECT Endpoint FROM NamedCredential WHERE DeveloperName = 'MyAppBackend' LIMIT 1];
+
+		if(namedCredential.isEmpty()) {
+			return new ApexPages.Message(ApexPages.Severity.WARNING,
+					'A Named Credential needs to be set up for My App to connect with its Backend.');
+		}
+		else {
+			apiEndpoint = namedCredential[0].Endpoint;
+			return new ApexPages.Message(ApexPages.Severity.CONFIRM,
+					'Named Credential <b><a href="/lightning/setup/NamedCredential/page?address=%2F'
+							+ namedCredential[0].Id + '">MyAppBackend</a></b> was created successfully.');
+		}
 	}
 
 
-	public override String buttonLabel() {
+	public override String getButtonLabel() {
 		return 'Execute';
 	}
 
 
 	public override PageReference run() {
-		if(namedCredential.isEmpty()) {
-			MetadataService.NamedCredential cred = new MetadataService.NamedCredential();
-			cred.fullName = 'A360Backend';
-			cred.label = 'A360 Backend';
-			cred.allowMergeFieldsInBody = false;
-			cred.allowMergeFieldsInHeader = true;
-			cred.generateAuthorizationHeader = true;
-			cred.oauthScope = 'namedCredential refresh_token';
-			cred.principalType = 'NamedUser';
-			cred.protocol = 'Oauth';
+		MetadataService.NamedCredential cred = new MetadataService.NamedCredential();
+		cred.fullName = 'MyAppBackend';
+		cred.label = 'My App Backend';
+		cred.generateAuthorizationHeader = true;
+		cred.oauthScope = 'api refresh_token';
+		cred.principalType = 'NamedUser';
+		cred.protocol = 'NoAuthentication';
+		cred.endpoint = apiEndpoint.trim() + 'backend/api';
 
-			cred.endpoint = apiEndpoint.trim();
-
-			create(new List<MetadataService.Metadata>{ cred });
-		}
+		create(new List<MetadataService.Metadata>{ cred });
 
 		return null;
 	}

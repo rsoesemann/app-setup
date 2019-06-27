@@ -27,5 +27,4 @@
             <apex:componentBody />
         </apex:pageBlock>
     </apex:form>
-
 </apex:component>

@@ -1,21 +1,17 @@
-<apex:page controller="SetupCtrl" sidebar="false" title="My App Setup" lightningStylesheets="{!$User.UIThemeDisplayed == 'Theme4d'}" >
+<apex:page controller="SetupCtrl" sidebar="false" title="My App Setup"
+           lightningStylesheets="{!$User.UIThemeDisplayed == 'Theme4d'}" >
 
     <c:setupStep title="Establish API Connection" step="{!connection}">
         <apex:pageBlockSection columns="1">
-            <apex:inputText label="Named Credential Endpoint:" size="100" required="true"
-                            value="{!connection.apiEndpoint}" disabled="{!connection.apiEndpoint != null}"/>
+            <apex:inputText label="API Base URL: " value="{!connection.apiEndpoint}" size="100" required="true"
+                             disabled="{!connection.apiEndpoint != null}"/>
         </apex:pageBlockSection>
     </c:setupStep>
 
-
-    <c:setupStep title="Setup API Remote Site" step="{!site}" />
-
-
-    <c:setupStep title="Batch Migrate Accounts" step="{!migrate}" />
-
+    <c:setupStep title="Batch Migrate Records" step="{!migrate}" />
 
     <apex:pageBlock >
-        <apex:pageBlockSection columns="1" title="Third-Party Licenses">
+        <apex:pageBlockSection title="Third-Party Licenses" columns="1">
             This software uses the following open-source software. Their licenses require us to reproduce their copyright notice.
             <ul>
                 <li><a href="https://github.com/rsoesemann/app-setup/blob/master/LICENSE" target="_blank">rsoesemann/app-setup</a></li>

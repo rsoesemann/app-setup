@@ -23,7 +23,7 @@ private class SetupNamedCredential_Test {
         // Verify
         System.assertNotEquals(null, step.getSeverity());
         System.assertNotEquals(null, step.getMessage());
-        System.assertNotEquals(null, step.buttonLabel());
+        System.assertNotEquals(null, step.getButtonLabel());
         System.assertEquals(null, unexpectedException);
     }
 
