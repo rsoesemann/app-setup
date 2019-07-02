@@ -1,18 +1,18 @@
 # Salesforce App Setup [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fd46a7eaa24c4cf78a5b981327275934)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rsoesemann/app-setup&amp;utm_campaign=Badge_Grade)
 
+Lean framework to build flexible and modular Setup UI for your Salesforce Lightning and Classic app.
+
 [![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
 <a href="https://githubsfdeploy.herokuapp.com?owner=rsoesemann&repo=app-setup">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png">
 </a>
 
-Lean framework to build flexible and modular Setup UI for your Salesforce Lightning and Classic app.
+<img width="500" alt="Bildschirmfoto_2019-07-02_um_17_06_18_png" src="https://user-images.githubusercontent.com/8180281/60524346-ac649a80-9cec-11e9-8690-eb49622b9b89.png">
 
 Installing an App using an install link often is not enough for making it work in a subscriber org. If you don't want to rely on flaky Install Scripts you often find yourself writing custom 
 Post-Installation Setup UI. To create Remote Sites, initialize Custom Settings or to create other complicated Metadata on behalf of the users. The aim of this small library is to take away the conceptual work of thinking about the UI.
 Just plugin you setup code and it will look great and work everywhere.
-
-<img width="500" alt="Bildschirmfoto_2019-07-02_um_17_06_18_png" src="https://user-images.githubusercontent.com/8180281/60524346-ac649a80-9cec-11e9-8690-eb49622b9b89.png">
 
 ## Features: ##
  - Uses Visualforce features that work and look great in Lightning and Classis
