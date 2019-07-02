@@ -2,4 +2,8 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <hasActivationRequired>false</hasActivationRequired>
     <label>My App Admin</label>
+    <tabSettings>
+        <tab>Setup</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>

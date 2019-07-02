@@ -1,15 +1,17 @@
 public abstract class BatchSetupStep extends SetupStep implements Database.Batchable<SObject> {
 
+    private static final String JOBS_LINK = '/apexpages/setup/listAsyncApexJobs.apexp';
+
+
 	// PUBLIC
 
 	public virtual override ApexPages.Message getStatus() {
 		String status = batchStatus();
-System.debug(LoggingLevel.ERROR, status);
 
-		if((new List<String>{'Failed', 'Aborted'}).contains(status)) {
+		if((new List<String>{ 'Failed' }).contains(status)) {
 			return new ApexPages.Message(ApexPages.Severity.ERROR, 'Execution ' + status + '. Check the ' + logsLink() + '.');
 		}
-		else if((new List<String>{'Holding', 'Queued', 'Preparing', 'Processing'}).contains(status)) {
+		else if((new List<String>{ 'Holding', 'Queued', 'Preparing', 'Processing' }).contains(status)) {
 			return new ApexPages.Message(ApexPages.Severity.INFO, 'Execution is ' + status + ' : Check the ' + logsLink());
 		}
 
@@ -23,9 +25,14 @@ System.debug(LoggingLevel.ERROR, status);
 
 
 	public override PageReference run() {
-		Database.executeBatch(this, 1);
+        PageReference result = null;
 
-		return null;
+        if((new List<String>{ 'Aborted', null }).contains(batchStatus())) {
+            Database.executeBatch(this);
+            result = new PageReference(JOBS_LINK);
+        }
+
+		return result;
 	}
 
 
@@ -44,6 +51,6 @@ System.debug(LoggingLevel.ERROR, status);
 
 
 	private String logsLink() {
-		return '<b><a href="/apexpages/setup/listAsyncApexJobs.apexp">Apex Jobs</a></b>';
+		return '<b><a href="' + JOBS_LINK + '">Apex Jobs</a></b>';
 	}
 }

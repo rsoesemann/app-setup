@@ -15,7 +15,7 @@
             <apex:pageBlockButtons location="bottom" rendered="{!NOT(ISNULL(step.buttonLabel)) && step.severity != 'CONFIRM'}">
                 <apex:commandButton value="{!step.buttonLabel}"
                                     action="{!step.doRun}"
-                                    disabled="{!step.severity = 'CONFIRM' || step.severity = 'ERROR'}"
+                                    disabled="{!step.severity != 'WARNING'}"
                                     rerender="form"
                                     status="loading" />
 

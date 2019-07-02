@@ -2,7 +2,7 @@
 private class SetupCtrl_Test {
 
     @IsTest
-    private static void load() {
+    private static void init() {
 
         // Setup
         Exception unexpectedException = null;

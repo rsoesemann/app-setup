@@ -8,7 +8,7 @@ public with sharing class SetupUsingBatch extends BatchSetupStep {
 
 		if(result == null) {
 			Integer toMigrate = [SELECT Count() FROM Account];
-			ApexPages.Severity severity = (toMigrate > 0) ? ApexPages.Severity.CONFIRM : ApexPages.Severity.WARNING;
+			ApexPages.Severity severity = (toMigrate > 0) ? ApexPages.Severity.WARNING : ApexPages.Severity.CONFIRM;
 			String message = toMigrate + ' Accounts need to be migrated (via batch job).';
 			result = new ApexPages.Message(severity, message);
 		}
