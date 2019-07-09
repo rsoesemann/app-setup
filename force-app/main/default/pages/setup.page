@@ -11,7 +11,10 @@
     <c:setupStep title="Batch Migrate Records" step="{!migrate}" />
 
     <apex:pageBlock >
-        <apex:pageBlockSection title="Third-Party Licenses" columns="1">
+        <apex:pageBlockSection columns="1" title="Third-Party Licenses (click for details)" id="licences">
+            <script>
+                twistSection(document.getElementById('img_{!$Component.licences}'));
+            </script>
             This software uses the following open-source software. Their licenses require us to reproduce their copyright notice.
             <ul>
                 <li><a href="https://github.com/rsoesemann/app-setup/blob/master/LICENSE" target="_blank">rsoesemann/app-setup</a></li>
