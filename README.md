@@ -24,6 +24,9 @@ Just plugin you setup code and it will look great and work everywhere.
  - Support for long-running batch steps.
  - Provides a perfect place to mention the Open-Source code you use in your app.
  
+## Why Visualforce? ##
+I sometime get asked why this is a Visualforce page and not a Lightning tab or a bunch of Aura / LWC components. Setup Steps very often need to use APIs to make something happen in Salesforce. E.g. creating a Named Credential requires to make callouts to the Metadata API. [This cannot be done from anything Lightning but from Visualforce](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/apex_api_calls.htm).
+ 
 ## Screenshots: ##
 
 <img width="926" alt="Bildschirmfoto_2019-07-02_um_17_06_18_png" src="https://user-images.githubusercontent.com/8180281/60524346-ac649a80-9cec-11e9-8690-eb49622b9b89.png">
