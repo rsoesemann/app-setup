@@ -22,7 +22,7 @@ public with sharing class SetupNamedCredential extends SetupStep {
 	}
 
 
-	public override String getButtonLabel() {
+	public override String buttonLabel() {
 		return 'Execute';
 	}
 

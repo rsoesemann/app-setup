@@ -1,6 +1,5 @@
 public with sharing class SetupUsingBatch extends BatchSetupStep {
 
-
 	// PUBLIC
 
 	public override ApexPages.Message getStatus() {
