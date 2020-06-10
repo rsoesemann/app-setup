@@ -19,7 +19,7 @@ public abstract class BatchSetupStep extends SetupStep implements Database.Batch
 	}
 
 
-	public override String getButtonLabel() {
+	public override String buttonLabel() {
 		return 'Run';
 	}
 
