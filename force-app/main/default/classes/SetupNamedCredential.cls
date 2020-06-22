@@ -15,9 +15,8 @@ public with sharing class SetupNamedCredential extends SetupStep {
 		}
 		else {
 			apiEndpoint = namedCredential[0].Endpoint;
-			return new ApexPages.Message(ApexPages.Severity.CONFIRM,
-					'Named Credential <b><a href="/lightning/setup/NamedCredential/page?address=%2F'
-							+ namedCredential[0].Id + '">MyAppBackend</a></b> was created successfully.');
+        
+			return new ApexPages.Message(ApexPages.Severity.CONFIRM, setupLink(namedCredential) + ' was created successfully.');
 		}
 	}
 
@@ -39,6 +38,6 @@ public with sharing class SetupNamedCredential extends SetupStep {
 
 		create(new List<MetadataService.Metadata>{ cred });
 
-		return null;
+		return currentPage();
 	}
 }

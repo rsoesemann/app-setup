@@ -1,13 +1,30 @@
-public with sharing class SetupCtrl {
+public with sharing abstract class SetupCtrl {
 
-    public SetupNamedCredential connection { get; private set; }
-    public SetupUsingBatch migrate { get; private set; }
-
+    public SetupCtrl controller { get; private set; }
 
     // CONSTRUCTOR
 
     public SetupCtrl() {
-        connection = new SetupNamedCredential();
-        migrate = new SetupUsingBatch();
+        controller = this;
+    }
+
+
+    // PUBLIC
+
+    public abstract List<SetupStep> steps();
+
+
+    public String getProgress() {
+        Integer result = 0;
+
+        List<SetupStep> steps = steps();
+
+        for(SetupStep step : steps) {
+            if(step.success) {
+                result += 100;
+            }
+        }
+
+        return String.valueOf(result / steps.size());
     }
 }

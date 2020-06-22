@@ -6,8 +6,15 @@ public abstract class SetupStep {
     public abstract PageReference run();
     public abstract String buttonLabel();
 
-
     // PUBLIC
+
+    public Boolean success {
+        get {
+            return (getStatus().getSeverity() == ApexPages.Severity.CONFIRM);
+        }
+        private set;
+    }
+
 
     public String getMessage() {
         return getStatus().getSummary();
@@ -17,7 +24,7 @@ public abstract class SetupStep {
     public String getSeverity() {
         return getStatus().getSeverity().name();
     }
-
+    
 
     public PageReference doRun() {
         PageReference result = null;
@@ -72,7 +79,7 @@ public abstract class SetupStep {
     }
 
     public static void create(List<MetadataService.Metadata> metadata) {
-        handle( mdApi().createMetadata(metadata) );
+        handle( createInBatch(metadata) );
     }
 
 
@@ -136,12 +143,23 @@ public abstract class SetupStep {
     }
 
 
-    protected String setupLink(Id id, String type, String label) {
-        return (id == null) ? label  : '<b><a href="/lightning/setup/' + type + '/page?address=%2F' + id +'">' + label + '</a></b>';
+    protected String setupLink(SObjectType type) {
+        return '<b><a href="/lightning/setup/ObjectManager/' + type + '/FieldsAndRelationships/view" target="_blank">' + type.getDescribe().getLabel() + '</a></b>';
     }
 
 
-    protected PageReference refresh() {
+    
+    protected String setupLink(String id, String type, String label) {
+        return (id == null) ? '<b>' + label + '</b>'  : '<b><a href="/lightning/setup/' + type + '/page?address=%2F' + id +'" target="_blank">' + label + '</a></b>';
+    }
+
+
+    protected String setupLink(String label, String url) {
+        return '<b><a href="' + url +'" target="_blank">' + label + '</a></b>';
+    }
+
+
+    protected PageReference currentPage() {
         PageReference result = Page.setup;
         result.setRedirect(true);
         return result;
@@ -161,6 +179,29 @@ public abstract class SetupStep {
             ApexPages.addMessages(ex);
         }
 
+        return result;
+    }
+
+
+    // Note: Metadata service accepts only 10 records at a time
+    private static List<MetadataService.SaveResult> createInBatch(List<MetadataService.Metadata> metadata) {
+        List<MetadataService.SaveResult> result = new List<MetadataService.SaveResult>();
+
+        List<MetadataService.Metadata> currentBatch = new List<MetadataService.Metadata>();
+        Integer batchSize = 10;
+
+        for(MetadataService.Metadata record : metadata) {
+            currentBatch.add(record);
+
+            if(currentBatch.size() == batchSize && !currentBatch.isEmpty()) {
+                result.addAll(mdApi().createMetadata(currentBatch));
+                currentBatch.clear();
+            }
+        }
+        
+        if(!currentBatch.isEmpty()) {
+            result.addAll(mdApi().createMetadata(currentBatch));            
+        }
         return result;
     }
 
