@@ -3,9 +3,9 @@
 
     <apex:slds />
 
-    <div class="slds-scope" style="margin-top: -28px;">
+    <div class="slds-scope">
         <section class="slds-card slds-p-around_small">
-            <header class="slds-theme_shade slds-p-around_medium slds-m-bottom_small">
+            <header class="slds-theme_shade slds-p-around_medium slds-m-bottom_small {!IF($User.UIThemeDisplayed == 'Theme4d', 'slds-global-header_container', '')}">
                 <div>
                     <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small" id="progress-bar-label-id-2">
                         <span>Complete all the steps below to finish setting up assets360</span>
