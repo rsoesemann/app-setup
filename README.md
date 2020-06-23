@@ -8,7 +8,7 @@ Lean framework to build flexible and modular Setup UI for your Salesforce Lightn
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png">
 </a>
 
-<img width="500" alt="Bildschirmfoto_2019-07-02_um_17_06_18_png" src="https://user-images.githubusercontent.com/8180281/60524346-ac649a80-9cec-11e9-8690-eb49622b9b89.png">
+<img width="500" src="https://user-images.githubusercontent.com/8180281/85404639-87051800-b55f-11ea-849e-89d0382d2b10.png">
 
 Installing an App using an install link often is not enough for making it work in a subscriber org. If you don't want to rely on flaky Install Scripts you often find yourself writing custom 
 Post-Installation Setup UI. To create Remote Sites, initialize Custom Settings or to create other complicated Metadata on behalf of the users. The aim of this small library is to take away the conceptual work of thinking about the UI.
@@ -26,14 +26,7 @@ Just plugin you setup code and it will look great and work everywhere.
  
 ## Why Visualforce? ##
 I sometime get asked why this is a Visualforce page and not a Lightning tab or a bunch of Aura / LWC components. There are multiple reasons:
-- Setup Steps very often need to use APIs to make something happen in Salesforce. E.g. creating a Named Credential requires to make callouts to the Metadata API. [This cannot be done from anything Lightning but from Visualforce](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/apex_api_calls.htm). 
+- Setup Steps very often need to use APIs to make something happen in Salesforce. E.g. creating a Named Credential requires to make callouts to the Metadata API. [This cannot be done from anything Lightning but from Visualforce](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/apex_api_calls.htm).
+- Managed packages currently only allow to package a Visualforce-based Customize/Setup option 
 - It's easier to display a VF-based UI in Classic and auto-generate it nicely as Lightning-styled than the other way round.
 - Setup pages are not super interactive, so all the Lightning funkyness is not needed, especially as it comes at cost of increased code complexity and maintainance. Just compare a few lines of well tested Apex and Visualforce with a LWC-component.
- 
-## Screenshots: ##
-
-<img width="926" alt="Bildschirmfoto_2019-07-02_um_17_06_18_png" src="https://user-images.githubusercontent.com/8180281/60524346-ac649a80-9cec-11e9-8690-eb49622b9b89.png">
----
-<img width="928" alt="Bildschirmfoto_2019-07-02_um_16_55_13_png" src="https://user-images.githubusercontent.com/8180281/60524334-a79fe680-9cec-11e9-8b47-998fadd53090.png">
----
-<img width="1022" alt="Bildschirmfoto 2019-07-02 um 12 49 56" src="https://user-images.githubusercontent.com/8180281/60524355-af5f8b00-9cec-11e9-9e84-e6e1c2adb45a.png">
