@@ -10,11 +10,5 @@
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "48.0",
-    "packageAliases": {
-        "app-setup": "0Ho2o000000TN4ECAW",
-        "app-setup@0.1.0-1": "04t2o000001AvwiAAC",
-        "app-setup@0.1.0-3": "04t2o000001AvwsAAC",
-        "app-setup@0.1.0-4": "04t2o000001Avx2AAC"
-    }
+    "sourceApiVersion": "48.0"
 }
