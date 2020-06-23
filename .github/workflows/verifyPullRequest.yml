@@ -3,7 +3,7 @@ name: Verify Pull Request
 on:
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   build:
@@ -11,10 +11,10 @@ jobs:
     container:
       image: docker://salesforce/salesforcedx:latest-full
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Authorise Dev Hub
-      run: |
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Authorise Dev Hub
+        run: |
           echo ${{ secrets.DEV_HUB_URL }} > devHubURLFile
           sfdx force:auth:sfdxurl:store -d -f devHubURLFile
           rm devHubURLFile

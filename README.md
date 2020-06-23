@@ -15,10 +15,10 @@ Post-Installation Setup UI. To create Remote Sites, initialize Custom Settings o
 Just plugin you setup code and it will look great and work everywhere.
 
 ## Features: ##
- - Uses Visualforce features that work and look great in Lightning and Classis
+ - Uses Visualforce plus <a href="https://www.lightningdesignsystem.com/">SLDS Styling</a> to work and look great in Lightning and Classis
  - Works as single Setup screen/tab that can hold arbitrary modular Setup steps
- - Each step has its own Class and UI segment
- - Basically no need to write any UI code.
+ - Each step is nicely encapsulated in its own Apex class and UI component
+ - For easy steps no need to write UI code.
  - Each step can have arbitrary UI.
  - No need but flexible for using Custom Settings or Custom Metadata to store state.
  - Support for long-running batch steps.
