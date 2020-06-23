@@ -12,6 +12,8 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "48.0",
     "packageAliases": {
-        "app-setup": "0Ho4A000000fxSuSAI"
+        "app-setup": "0Ho4A000000fxSuSAI",
+        "app-setup@1.1.0.1": "04t4A000000onS0QAI",
+        "app-setup@1.1.0.2": "04t4A000000onS5QAI"
     }
 }
