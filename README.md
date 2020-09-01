@@ -2,12 +2,6 @@
 
 Lean framework to build flexible and modular Setup UI for your Salesforce Lightning and Classic app.
 
-[![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
-<a href="https://githubsfdeploy.herokuapp.com?owner=rsoesemann&repo=app-setup">
-  <img alt="Deploy to Salesforce"
-       src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png">
-</a>
-
 <img width="500" src="https://user-images.githubusercontent.com/8180281/85404639-87051800-b55f-11ea-849e-89d0382d2b10.png">
 
 Installing an App using an install link often is not enough for making it work in a subscriber org. If you don't want to rely on flaky Install Scripts you often find yourself writing custom 
