@@ -1,5 +1,4 @@
-# Salesforce App Setup [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fd46a7eaa24c4cf78a5b981327275934)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rsoesemann/app-setup&amp;utm_campaign=Badge_Grade)
-
+# Salesforce App Setup
 Lean framework to build flexible and modular Setup UI for your Salesforce Lightning and Classic app.
 
 <img width="500" src="https://user-images.githubusercontent.com/8180281/85404639-87051800-b55f-11ea-849e-89d0382d2b10.png">
