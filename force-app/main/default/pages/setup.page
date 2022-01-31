@@ -28,7 +28,6 @@
             </div>
             <ul>
                 <li><a href="https://github.com/rsoesemann/app-setup/blob/master/LICENSE" target="_blank">rsoesemann/app-setup</a></li>
-                <li><a href="https://github.com/financialforcedev/fflib-apex-common/blob/master/LICENSE" target="_blank">financialforcedev/fflib-apex-common</a></li>
                 <li><a href="https://github.com/financialforcedev/apex-mdapi/blob/master/LICENSE"  target="_blank">financialforcedev/apex-mdapi</a></li>
             </ul>
         </c:setupStep>
