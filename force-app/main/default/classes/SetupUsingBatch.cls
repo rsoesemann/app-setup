@@ -17,15 +17,14 @@ public with sharing class SetupUsingBatch extends BatchSetupStep {
 
 
 	public List<SObject> start(Database.BatchableContext ctx) {
-		return [SELECT Id FROM Account];
+		return [SELECT Id FROM ApexClass];
 	}
 
 
-	public void execute(Database.BatchableContext ctx, List<SObject> accounts) {
+	public void execute(Database.BatchableContext ctx, List<SObject> scope) {
 		for(Integer i=0; i<100000000; i++) {
 			Integer a = i*i;
 		}
-		update accounts;
 	}
 
 

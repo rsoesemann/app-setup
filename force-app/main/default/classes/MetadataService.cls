@@ -11702,6 +11702,7 @@ public class MetadataService {
 		public String certificate;
 		public String consumerKey;
 		public String consumerSecret;
+		public Boolean isAdminApproved;
 		public String[] scopes;
 		public String singleLogoutUrl;
 		private String[] callbackUrl_type_info = new String[]{'callbackUrl',SOAP_M_URI,null,'1','1','false'};

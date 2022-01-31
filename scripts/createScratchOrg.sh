@@ -1,11 +1,11 @@
-orglist:#!/bin/bash
+#!/bin/bash
 source `dirname $0`/config.sh
 
 execute() {
   $@ || exit
 }
 
-listif [ -z "$DEV_HUB_URL" ]; then
+if [ -z "$DEV_HUB_URL" ]; then
   echo "set default devhub user"
   execute sfdx force:config:set defaultdevhubusername=$DEV_HUB_ALIAS
 
@@ -31,4 +31,4 @@ execute sfdx force:user:permset:assign -n Admin
 echo "Create sample data"
 #sfdx force:apex:execute -f scripts/createSampleData.apex -u $SCRATCH_ORG_ALIAS
 
-sh runTests.sh
+source "$(dirname $0)/runTests.sh"
