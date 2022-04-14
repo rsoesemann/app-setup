@@ -9,6 +9,7 @@ Just plugin you setup code and it will look great and work everywhere.
 
 ## Features: ##
  - Uses Visualforce plus <a href="https://www.lightningdesignsystem.com/">SLDS Styling</a> to work and look great in Lightning and Classis
+ - Mimics the UI of a [SLDS Setup Assistant](https://www.lightningdesignsystem.com/components/setup-assistant/)
  - Works as single Setup screen/tab that can hold arbitrary modular Setup steps
  - Each step is nicely encapsulated in its own Apex class and UI component
  - For easy steps no need to write UI code.
@@ -19,7 +20,7 @@ Just plugin you setup code and it will look great and work everywhere.
  
 ## Why Visualforce? ##
 I sometime get asked why this is a Visualforce page and not a Lightning tab or a bunch of Aura / LWC components. There are multiple reasons:
-- Setup Steps very often need to use APIs to make something happen in Salesforce. E.g. creating a Named Credential requires to make callouts to the Metadata API. [This cannot be done from anything Lightning but from Visualforce](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/apex_api_calls.htm).
+- Setup steps very often need to use APIs (SOAP, Tooling, Metadata,..) to make something happen in Salesforce. E.g. creating a Named Credential requires to make callouts to the Metadata API. [This cannot be done from anything Lightning but from Visualforce](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/apex_api_calls.htm). There are [workarounds](https://www.salesforcecodecrack.com/2019/11/session-id-of-current-user-in-lightning-context.html) but they are [not safe to pass security review](https://salesforce.stackexchange.com/questions/341155/sessionid-in-lwc-for-security-review).
 - Managed packages currently only allow to package a Visualforce-based Customize/Setup option 
 - It's easier to display a VF-based UI in Classic and auto-generate it nicely as Lightning-styled than the other way round.
 - Setup pages are not super interactive, so all the Lightning funkyness is not needed, especially as it comes at cost of increased code complexity and maintainance. Just compare a few lines of well tested Apex and Visualforce with a LWC-component.
