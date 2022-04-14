@@ -1,6 +1,6 @@
 public with sharing class SetupConnectedApp extends SetupStep implements Canvas.CanvasLifecycleHandler{
 
-    private final static String BASE_URL = new SetupNamedCredential().baseUrl;
+    private final static String BASE_URL = SetupBackendConnection.API_ENDPOINT;
 
     public String canvasAppURL { get; set; }
     public String callbackURL { get; set; }
@@ -11,8 +11,7 @@ public with sharing class SetupConnectedApp extends SetupStep implements Canvas.
     public override ApexPages.Message getStatus() {
         Boolean setupDone = !connectedApp.isEmpty();
         ApexPages.Severity severity = (setupDone) ? ApexPages.Severity.CONFIRM : ApexPages.Severity.WARNING;
-        String sentence = (setupDone) ? Label.SetupConnectedAppSetUpCorrectly : Label.SetupConnectedAppNeedToCreate;
-
+        String sentence = (setupDone) ? '{0} has been created successfully' : 'Connected app needs to be created';
         String message = String.format(sentence, new List<String>{ setupLink(connectedApp) });
 
         return new ApexPages.Message(severity, message);

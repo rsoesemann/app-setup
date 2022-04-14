@@ -159,6 +159,12 @@ public abstract class SetupStep {
     }
 
 
+    protected String link(String label, String url) {
+        return '<b><a href="' + url +'" target="_blank">' + label + '</a></b>';
+    }
+
+
+
     protected PageReference currentPage() {
         PageReference result = Page.setup;
         result.setRedirect(true);
