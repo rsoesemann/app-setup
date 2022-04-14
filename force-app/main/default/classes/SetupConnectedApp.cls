@@ -43,7 +43,7 @@ public with sharing class SetupConnectedApp extends SetupStep implements Canvas.
 
     
     public void onRender(Canvas.RenderContext renderContext){
-        System.debug('Canvas lifecycle called.');
+        System.debug(LoggingLevel.DEBUG, 'Canvas lifecycle called.');
     }
 
 

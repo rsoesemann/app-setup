@@ -1,7 +1,7 @@
 public with sharing class SetupBackendConnection extends SetupStep {
 
     public static final String DEV_NAME = 'MockLab_Integration';
-    public static final String API_ENDPOINT = 'https://rsoesemann.mocklab.io/';
+    public static final String API_ENDPOINT = 'https://rsoesemann.mocklab.io';
 
     // PUBLIC
 
@@ -75,9 +75,9 @@ public with sharing class SetupBackendConnection extends SetupStep {
                 '<urn1:DefaultScopes>producer</urn1:DefaultScopes>' +
                 '<urn1:ConsumerKey>' + clientId + '</urn1:ConsumerKey>' +
                 '<urn1:ConsumerSecret>' + clientSecret + '</urn1:ConsumerSecret>' +
-                '<urn1:AuthorizeUrl>https://oauth.mocklab.io/oauth/authorize</urn1:AuthorizeUrl>' +
-                '<urn1:TokenUrl>https://oauth.mocklab.io/oauth/token</urn1:TokenUrl>' +
-                '<urn1:UserInfoUrl>https://oauth.mocklab.io/userinfo</urn1:UserInfoUrl>'
+                '<urn1:AuthorizeUrl>' + API_ENDPOINT + '/oauth/authorize</urn1:AuthorizeUrl>' +
+                '<urn1:TokenUrl>' + API_ENDPOINT + '/oauth/token</urn1:TokenUrl>' +
+                '<urn1:UserInfoUrl>' + API_ENDPOINT + '/userinfo</urn1:UserInfoUrl>'
             );
         }
     }
