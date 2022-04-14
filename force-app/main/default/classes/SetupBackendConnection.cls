@@ -144,9 +144,10 @@ public with sharing class SetupBackendConnection extends SetupStep {
             new Api().getThings();
         }
         catch(Exception ex) {
+            System.debug(LoggingLevel.ERROR, ex);
             return false;
         }
 
-        return false;
+        return true;
     }
 }
