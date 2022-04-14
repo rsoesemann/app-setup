@@ -95,8 +95,7 @@ public with sharing class SetupBackendConnection extends SetupStep {
             cred.generateAuthorizationHeader = true;
             cred.principalType = 'NamedUser';
             cred.protocol = 'Oauth';
-            cred.authProvider = DEV_NAME;
-            cred.endpoint = API_ENDPOINT;
+            cred.endpoint = API_ENDPOINT + '/v1';
             cred.oauthScope = 'openid, profile, email';
 
             create(cred);
@@ -104,11 +103,12 @@ public with sharing class SetupBackendConnection extends SetupStep {
     }
 
 
+    @SuppressWarnings('PMD.ApexOpenRedirect')
     private PageReference oAuthKickoffUrl() {
         PageReference result = new PageReference(authProvider[0].LinkKickoffUrl);
         result.getParameters().put('startURL', '/lightning/n/Setup');
         return result;
-    }    @SuppressWarnings('PMD.ApexOpenRedirect')
+    }    
    
    /* private PageReference oAuthKickoffUrl() {
         String domain = Url.getOrgDomainUrl().toExternalForm();
@@ -140,7 +140,12 @@ public with sharing class SetupBackendConnection extends SetupStep {
 
 
     private Boolean isAuthorized() {
-        
+        try {
+            new Api().getThings();
+        }
+        catch(Exception ex) {
+            return false;
+        }
 
         return false;
     }
