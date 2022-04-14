@@ -110,16 +110,6 @@ public with sharing class SetupBackendConnection extends SetupStep {
         return result;
     }    
    
-   /* private PageReference oAuthKickoffUrl() {
-        String domain = Url.getOrgDomainUrl().toExternalForm();
-        String path = '/services/auth/xds/' + DEV_NAME;
-      
-        PageReference result = new PageReference(domain + path);
-        result.getParameters().put('scope', 'producer');
-        return result;
-        
-    }*/
-
 
     public static String callbackUrl() {
         return Url.getOrgDomainUrl().toExternalForm() + '/services/authcallback/' + DEV_NAME;
