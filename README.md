@@ -24,3 +24,7 @@ I sometime get asked why this is a Visualforce page and not a Lightning tab or a
 - Managed packages currently only allow to package a Visualforce-based Customize/Setup option 
 - It's easier to display a VF-based UI in Classic and auto-generate it nicely as Lightning-styled than the other way round.
 - Setup pages are not super interactive, so all the Lightning funkyness is not needed, especially as it comes at cost of increased code complexity and maintainance. Just compare a few lines of well tested Apex and Visualforce with a LWC-component.
+
+![Screenshot 2022-04-29 at 12 25 24](https://user-images.githubusercontent.com/8180281/165927781-32742ee6-f604-4004-a5c6-b8b91f3acbb0.png)
+
+
