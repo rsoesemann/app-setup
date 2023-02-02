@@ -3,6 +3,6 @@
     <apiVersion>48.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <description>DEPRECATED</description>
+    <description></description>
     <label>Setup</label>
 </ApexPage>

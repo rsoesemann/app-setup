@@ -1,4 +1,5 @@
 .sfdx/
+.sf/
 .vscode/
 IlluminatedCloud/
 .idea/
@@ -6,6 +7,9 @@ IlluminatedCloud/
 
 # MacOS system files
 .DS_Store
+
+.dccache
+session.properties
 
 # Windows system files
 Thumbs.db
