@@ -22,36 +22,6 @@
 
         <c:setupStep title="Batch Migrate Records" step="{!batch}" enabled="{!connection.success}"/>
 
-        <c:setupStep title="Cleanup deprecated components" step="{!deprecated}" enabled="false">
-            <apex:pageBlock >
-                <apex:repeat value="{!deprecated.metadata}" var="type">
-                    <apex:pageBlockTable value="{!deprecated.metadata[type]}" var="component" columnsWidth="20%,80%">
-                        <apex:column headerValue="Type"><em>{!type}</em></apex:column>
-                        <apex:column headerValue="API Name"><a href="/{!component.Id}" target="_blank">{!component.Name}</a></apex:column>
-                    </apex:pageBlockTable>
-                </apex:repeat>
-
-                <apex:repeat value="{!deprecated.objects}" var="type">
-                    <apex:pageBlockTable value="{!deprecated.objects[type]}" var="objectOrField" rendered="{!type != null}" columnsWidth="20%,20%,60%">
-                        <apex:column headerValue="{!type}__c"></apex:column>
-                        <apex:column >
-                            <a href="/{!IF(CONTAINS(objectOrField.DurableId, "."), RIGHT(objectOrField.DurableId, 15), objectOrField.DurableId)}"
-                                target="_blank">{!objectOrField.DeveloperName + "__c"}</a>
-                        </apex:column>
-                        <apex:column >
-                            <apex:facet name="header">
-                                <apex:outputPanel rendered="{!deprecated.recordCount[type] > 0}">
-                                    <apex:image value="/img/samples/flag_red.gif"/>
-                                    <span style="font-weight:normal;">{!IF(deprecated.recordCount[type] = 1000, "> 1000", deprecated.recordCount[type])}
-                                        records of that type found.</span>
-                                </apex:outputPanel>
-                            </apex:facet>
-                        </apex:column>
-                    </apex:pageBlockTable>
-                </apex:repeat>
-            </apex:pageBlock>
-        </c:setupStep>
-
         <c:setupStep title="Third-Party Licenses (click for details)" collapsed="false">
             <div class="slds-setup-assistant__step-summary-content slds-media__body">
                 This software uses the following open-source software. Their licenses require us to reproduce their copyright notice.
