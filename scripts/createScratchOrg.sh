@@ -5,19 +5,21 @@ execute() {
   $@ || exit
 }
 
-if [ -z "$DEV_HUB_URL" ]; then
+if [ -z "$secrets.DEV_HUB_URL" ]; then
   echo "set default devhub user"
   execute sfdx force:config:set defaultdevhubusername=$DEV_HUB_ALIAS
-
-  echo "deleting old scratch org"
-  sfdx force:org:delete -p -u $SCRATCH_ORG_ALIAS
 fi
 
-echo "Creating scratch org"
-execute sfdx force:org:create -a $SCRATCH_ORG_ALIAS -w 10 -s -f ./config/project-scratch-def.json -d 30
+echo "Deleting old scratch org"
+sfdx force:org:delete -p -u $SCRATCH_ORG_ALIAS
 
-echo "Make sure Org user is english"
-sfdx force:data:record:update -s User -w "Name='User User'" -v "Languagelocalekey=en_US"
+echo "Creating scratch ORG"
+execute sfdx force:org:create -a $SCRATCH_ORG_ALIAS -s -f ./config/scratch-org-def.json -d 7
+
+echo "Install dependencies"
+execute sfdx force:package:install --package 04t30000001DWL0AAO --publishwait 5 --wait 10 -u $SCRATCH_ORG_ALIAS
+#IsvConsole execute sfdx force:package:install --package 04t5w000005hh7fAAA --publishwait 5 --wait 10 -u $SCRATCH_ORG_ALIAS
+#Fmaexecute sfdx force:package:install --package 04t3h000004m8DkAAI --publishwait 5 --wait 10 -u $SCRATCH_ORG_ALIAS
 
 echo "Pushing changes to scratch org"
 execute sfdx force:source:push
@@ -25,7 +27,20 @@ execute sfdx force:source:push
 echo "Assigning permission"
 execute sfdx force:user:permset:assign -n Admin
 
-echo "Create sample data"
-#sfdx force:apex:execute -f scripts/createSampleData.apex -u $SCRATCH_ORG_ALIAS
+echo "Make sure Org user is english"
+sfdx force:data:record:update -s User -w "Name='User User'" -v "Languagelocalekey=en_US"
 
-source "$(dirname $0)/runTests.sh"
+echo "Create sample data"
+execute sfdx force:apex:execute -f scripts/createSampleData.apex
+
+echo "Running Apex Tests"
+execute sfdx force:apex:test:run -l RunLocalTests -w 30 -c -r human
+
+echo "Running CLI Scanner"
+execute sfdx scanner:run --target "force-app" --pmdconfig "ruleset.xml"
+
+if [ -f "package.json" ]; then
+  echo "Running jest tests"
+  execute npm install
+  execute npm run test:unit
+fi
