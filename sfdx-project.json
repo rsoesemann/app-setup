@@ -1,19 +1,16 @@
 {
-    "packageDirectories": [
-        {
-            "path": "force-app",
-            "default": true,
-            "package": "app-setup",
-            "versionName": "Summer '20",
-            "versionNumber": "1.1.0.NEXT"
-        }
-    ],
-    "namespace": "",
-    "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "55.0",
-    "packageAliases": {
-        "app-setup": "0Ho4A000000fxSuSAI",
-        "app-setup@1.1.0.1": "04t4A000000onS0QAI",
-        "app-setup@1.1.0.2": "04t4A000000onS5QAI"
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "app-setup",
+      "versionName": "November '24",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": ""
     }
+  ],
+  "name": "app-setup",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "62.0"
 }

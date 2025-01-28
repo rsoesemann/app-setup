@@ -1,26 +1,8 @@
 <apex:page controller="SetupPageCtrl" title="My App Setup" docType="html-5.0" sidebar="false" lightningStylesheets="true">
 
     <c:setup ctrl="{!controller}">
-        <c:setupStep title="Establish API Connection" step="{!connection}">
-            <apex:pageBlock >
-                <apex:pageBlockSection columns="1">
-                    <apex:inputText value="{!connection.callback}" label="Callback URL:" size="200" />
-                    <apex:inputText value="{!connection.clientId}" label="Client Id:" size="50" required="true" disabled="{!connection.success}" />
-                    <apex:inputSecret value="{!connection.clientSecret}" label="Client Secret:" size="50" redisplay="true" required="true"  disabled="{!connection.success}" />
-                </apex:pageBlockSection>
-            </apex:pageBlock>
-        </c:setupStep>
 
-        <c:setupStep title="Create Canvas App" step="{!connectedApp}">
-            <apex:pageBlock >
-                <apex:pageBlockSection columns="1">
-                    <apex:inputText value="{!connectedApp.canvasAppURL}" label="Canvas App URL:" size="100" required="true" />
-                    <apex:inputText value="{!connectedApp.callbackUrl}" label="Callback URL:" size="100" required="true" />
-                </apex:pageBlockSection>
-            </apex:pageBlock>
-        </c:setupStep>
-
-        <c:setupStep title="Batch Migrate Records" step="{!batch}" enabled="{!connection.success}"/>
+        <c:setupStep title="Batch Migrate Records" step="{!batch}" enabled="true"/>
 
         <c:setupStep title="Third-Party Licenses (click for details)" collapsed="false">
             <div class="slds-setup-assistant__step-summary-content slds-media__body">
@@ -28,8 +10,6 @@
             </div>
             <ul>
                 <li><a href="https://github.com/rsoesemann/app-setup/blob/master/LICENSE" target="_blank">rsoesemann/app-setup</a></li>
-                <li><a href="https://github.com/financialforcedev/apex-mdapi/blob/master/LICENSE"  target="_blank">financialforcedev/apex-mdapi</a></li>
-                <li><a href="https://github.com/financialforcedev/ffhttp-core/blob/master/LICENSE" target="_blank">financialforcedev/ffhttp-core</a></li>
             </ul>
         </c:setupStep>
     </c:setup>
