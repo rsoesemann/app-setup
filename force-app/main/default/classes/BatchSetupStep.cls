@@ -27,8 +27,8 @@ public abstract with sharing class BatchSetupStep extends SetupStep implements D
 	public override PageReference run() {
         PageReference result = null;
 
-        if(!(new List<String>{ 'Aborted', null }).contains(batchStatus())) {
-            Database.executeBatch(this, 10);
+        if(batchStatus() != 'Aborted') {
+            Database.executeBatch(this, 1);
             result = new PageReference(JOBS_LINK);
         }
 
