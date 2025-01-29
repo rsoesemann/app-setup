@@ -2,8 +2,8 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>62.0</apiVersion>
     <environments>Default</environments>
-    <interviewLabel>DpendantFlow {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>DpendantFlow</label>
+    <interviewLabel>DependantFlow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DependantFlow</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
