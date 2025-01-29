@@ -1,7 +1,7 @@
-public with sharing class CleanUpStep extends SetupStep {
-   
+public with sharing class MigrateDependenciesStep extends SetupStep {
+    
     public override ApexPages.Message getStatus() {
-		return new ApexPages.Message(ApexPages.Severity.INFO, 'message');
+		return new ApexPages.Message(ApexPages.Severity.CONFIRM, 'message');
 	}
 
     public override String buttonLabel() {

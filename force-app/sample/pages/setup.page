@@ -1,10 +1,10 @@
-<apex:page controller="SetupPageCtrl" title="KAPTIO: Supplier Field Migration" docType="html-5.0" sidebar="false" lightningStylesheets="true">
+<apex:page controller="SetupPageCtrl" title="Migration to replace deprecated field" docType="html-5.0" sidebar="false" lightningStylesheets="true">
 
     <c:setup ctrl="{!controller}">
 
-        <c:setupStep title="Prepare for MIgration" step="{!prepare}"/>
-        <c:setupStep title="Run Migration" step="{!migrate}" />
-        <c:setupStep title="Clean up deprecated fields" step="{!clean}"/>
+        <c:setupStep title="Migrate Supplier Field value" step="{!migrateStep}" />
+        <c:setupStep title="Migrate Local Dependencies" step="{!dependencyStep}"/>
+        <c:setupStep title="Remove Deprecated Field" step="{!removeStep}"/>
 
         <c:setupStep title="Third-Party Licenses (click for details)" collapsed="false">
             <div class="slds-setup-assistant__step-summary-content slds-media__body">

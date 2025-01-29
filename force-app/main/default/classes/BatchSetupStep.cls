@@ -1,4 +1,4 @@
-public abstract class BatchSetupStep extends SetupStep implements Database.Batchable<SObject> {
+public abstract with sharing class BatchSetupStep extends SetupStep implements Database.Batchable<SObject> {
 
     private static final String JOBS_LINK = '/apexpages/setup/listAsyncApexJobs.apexp';
 

@@ -1,4 +1,4 @@
-public abstract class SetupStep {
+public abstract with sharing class SetupStep {
 
     // ABSTRACT
 
