@@ -53,6 +53,7 @@
                                                 <apex:commandButton value="{!step.buttonLabel}"
                                                                     action="{!step.doRun}"
                                                                     disabled="{!NOT(step.showButtonOnSuccess) && (step.success || step.severity = 'ERROR')}"
+                                                                    rendered="{!step.buttonLabel != NULL}"
                                                                     rerender="form"
                                                                     status="loading"
                                                                     styleClass="slds-button slds-button_outline-brand" />

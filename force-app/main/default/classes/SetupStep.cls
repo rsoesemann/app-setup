@@ -54,17 +54,6 @@ public abstract with sharing class SetupStep {
 
     // PROTECTED
 
-    protected List<Metadata> toolingApiQuery(String query) {
-        HttpRequest request = new HttpRequest();
-        request.setEndpoint(URL.getOrgDomainUrl().toExternalForm() + '/services/data/v62.0/tooling/query?q=' +  query);
-        request.setMethod('GET');
-        request.setHeader('Authorization', 'OAuth ' + UserInfo.getSessionId());
-        request.setHeader('Content-Type', 'application/json');
-
-        ToolingApiResponse result = (ToolingApiResponse) JSON.deserialize(new Http().send(request).getBody(), ToolingApiResponse.class);
-        return result.records;
-    }
-
     protected String setupLink(List<SObject> records) {
         SObjectType type = records.getSObjectType();
         Id id = null;
@@ -150,15 +139,4 @@ public abstract with sharing class SetupStep {
         }
     }
 
-    // INNER
-
-    public class ToolingApiResponse {
-        public List<Metadata> records;
-    }
-
-
-    public class Metadata {
-        public String Id;
-        public String DeveloperName;
-    }
 }

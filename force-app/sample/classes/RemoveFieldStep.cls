@@ -11,7 +11,7 @@ public with sharing class RemoveFieldStep extends SetupStep {
 	}
 
     public override String buttonLabel() {
-		return 'n/a';
+		return null;
 	}
 
 	public override PageReference run() {

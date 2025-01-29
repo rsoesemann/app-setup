@@ -1,6 +1,0 @@
-**/objects/Account/**
-!**/objects/Account/fields/OldField__c.field-meta.xml
-!**/objects/Account/fields/NewField__c.field-meta.xml
-!**/objects/Account/fields/NewEqualsNewField__c.field-meta.xml
-
-**/profiles/Admin.profile-meta.xml
