@@ -5,7 +5,6 @@ public with sharing class SetupPageCtrl extends SetupCtrl {
     public RemoveFieldStep removeStep { get; private set; }
     
 
-
     // CONSTRUCTOR
 
     public SetupPageCtrl() {

@@ -19,7 +19,7 @@ public with sharing class MigrateFieldStep extends BatchSetupStep {
 
 
 	public List<SObject> start(Database.BatchableContext ctx) {
-		FeatureManagement.setPackageIntegerValue('TotalRecordsToMigrate', [SELECT Count() FROM Account WHERE NewEqualsNewField__c = FALSE]);
+		FeatureManagement.setPackageIntegerValue('TotalRecordsToMigrate', [SELECT Count() FROM Account WHERE NewEqualsNewField__c = FALSE WITH SYSTEM_MODE]);
 		return [SELECT OldField__c, NewField__c 
 				FROM Account 
 				WHERE NewEqualsNewField__c = FALSE
@@ -34,6 +34,7 @@ public with sharing class MigrateFieldStep extends BatchSetupStep {
 		}
 
 		update scope;
+		
 		migrated += scope.size();
 		FeatureManagement.setPackageIntegerValue('TotalRecordsMigrated',migrated);
 	}

@@ -3,7 +3,28 @@
     <c:setup ctrl="{!controller}">
 
         <c:setupStep title="Migrate Supplier Field value" step="{!migrateStep}" />
-        <c:setupStep title="Migrate Local Dependencies" step="{!dependencyStep}"/>
+
+        <c:setupStep title="Migrate Local Dependencies" step="{!dependencyStep}">
+            <apex:pageBlock title="Custom Field Metadata Dependencies">
+                <apex:pageBlockSection title="Dependencies" columns="1">
+                    <apex:pageBlockTable value="{!dependencyStep.dependencies}" var="dep">
+                        <apex:column headerValue="Metadata Component Name">
+                            <apex:outputText value="{!dep.MetadataComponentName}" />
+                        </apex:column>
+                        <apex:column headerValue="Metadata Component Type">
+                            <apex:outputText value="{!dep.MetadataComponentType}" />
+                        </apex:column>
+                        <apex:column headerValue="Referenced Component Name">
+                            <apex:outputText value="{!dep.RefMetadataComponentName}" />
+                        </apex:column>
+                        <apex:column headerValue="Referenced Component Type">
+                            <apex:outputText value="{!dep.RefMetadataComponentType}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </c:setupStep>
+        
         <c:setupStep title="Remove Deprecated Field" step="{!removeStep}"/>
 
         <c:setupStep title="Third-Party Licenses (click for details)" collapsed="false">
