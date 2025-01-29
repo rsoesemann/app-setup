@@ -2,11 +2,15 @@ public with sharing class MigrateDependenciesStep extends SetupStep {
 
 	public List<ToolingApiRecord> dependencies { get; private set; }
 
-    
-    public override ApexPages.Message getStatus() {
+	// CONSTRUCTOR
+
+	public MigrateDependenciesStep() {
 		List<ToolingApiRecord> response = toolingApiQuery('SELECT Id  FROM CustomField WHERE TableEnumOrId = \'Account\' AND DeveloperName = \'OldField\'');
         dependencies = toolingApiQuery('SELECT MetadataComponentId, MetadataComponentName, MetadataComponentType FROM MetadataComponentDependency WHERE RefMetadataComponentId = \'' + response[0].Id + '\'');
+	}
 
+    
+    public override ApexPages.Message getStatus() {
 		if(dependencies.isEmpty()) {
 			return new ApexPages.Message(ApexPages.Severity.CONFIRM, 'Great! There are no local dependencies on the deprecated field.');
 		} else {

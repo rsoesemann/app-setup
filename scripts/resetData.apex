@@ -23,3 +23,5 @@ for (Account acc : newAccounts) {
 }
 update newAccounts;
 
+System.purgeOldAsyncJobs(Date.today()+1);
+
