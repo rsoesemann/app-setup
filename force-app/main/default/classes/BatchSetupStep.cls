@@ -28,7 +28,7 @@ public abstract with sharing class BatchSetupStep extends SetupStep implements D
         PageReference result = null;
 
         if(!(new List<String>{ 'Aborted', null }).contains(batchStatus())) {
-            Database.executeBatch(this);
+            Database.executeBatch(this, 10);
             result = new PageReference(JOBS_LINK);
         }
 

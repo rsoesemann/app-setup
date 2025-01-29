@@ -40,7 +40,7 @@ public with sharing class MigrateDependenciesStep extends SetupStep {
 
     // INNER
 
-    private class ToolingApiResponse {
+    public class ToolingApiResponse {
         public List<ToolingApiRecord> records;
     }
 
