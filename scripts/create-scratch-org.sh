@@ -25,6 +25,9 @@ execute sf org assign permset --name Admin
 echo "Make sure Org user is english"
 sf data update record --sobject User --where "Name='User User'" --values "Languagelocalekey=en_US"
 
+echo "Create sample data"
+execute sfdx force:apex:execute -f scripts/createSampleData.apex
+
 echo "Running Apex Tests"
 execute sf apex run test --test-level RunLocalTests --wait 30 --code-coverage --result-format human
 

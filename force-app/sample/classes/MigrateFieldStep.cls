@@ -34,14 +34,11 @@ public with sharing class MigrateFieldStep extends BatchSetupStep {
 		}
 
 		update scope;
-		
 		migrated += scope.size();
-		FeatureManagement.setPackageIntegerValue('TotalRecordsMigrated',migrated);
 	}
 
 
 	public void finish(Database.BatchableContext ctx) { 
-		// Note: Set it again to see if during migration new records might have been created.
 		FeatureManagement.setPackageIntegerValue('TotalRecordsToMigrate', [SELECT Count() FROM Account]);
 	}
 }

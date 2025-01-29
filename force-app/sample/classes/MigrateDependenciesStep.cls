@@ -6,7 +6,7 @@ public with sharing class MigrateDependenciesStep extends SetupStep {
     public override ApexPages.Message getStatus() {
 		List<ToolingApiRecord> response = toolingApiQuery('SELECT Id  FROM CustomField WHERE TableEnumOrId = \'Account\' AND DeveloperName = \'OldField\'');
         dependencies = toolingApiQuery('SELECT MetadataComponentId, MetadataComponentName, MetadataComponentType FROM MetadataComponentDependency WHERE RefMetadataComponentId = \'' + response[0].Id + '\'');
-System.debug(dependencies);
+
 		if(dependencies.isEmpty()) {
 			return new ApexPages.Message(ApexPages.Severity.CONFIRM, 'Great! There are no local dependencies on the deprecated field.');
 		} else {
@@ -26,7 +26,7 @@ System.debug(dependencies);
 
 	// Note: Tooling API with Session Id allowed by Salesforce without Named Cred
 	@SuppressWarnings('PMD.ApexSuggestUsingNamedCred')
-	public List<ToolingApiRecord> toolingApiQuery(String query) {
+	private List<ToolingApiRecord> toolingApiQuery(String query) {
         HttpRequest request = new HttpRequest();
         request.setEndpoint(URL.getOrgDomainUrl().toExternalForm() + '/services/data/v62.0/tooling/query?q=' +  query.replace(' ', '+'));
         request.setMethod('GET');
